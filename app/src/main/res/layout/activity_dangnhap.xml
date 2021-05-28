@@ -1,0 +1,127 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBardangnhap"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:titleTextColor="#050505"
+        android:title="Đăng nhập">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        android:src="@drawable/anh_logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="248dp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/tk"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginVertical="5dp"
+                android:hint="Email/Số điện thoại/Tên đăng nhập"
+                android:padding="10dp"
+                android:textSize="15dp" />
+
+            <EditText
+
+                android:id="@+id/mk"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginVertical="15dp"
+                android:hint="Mật khẩu"
+                android:padding="5dp"
+                android:textSize="15dp"
+                android:password="true"/>
+
+
+            <Button
+                android:id="@+id/btdangnhap"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#3B888274"
+                android:text="ĐĂNG NHẬP"
+                android:textColor="#81000000"
+                android:textStyle="bold">
+
+            </Button>
+
+            <Button
+                android:id="@+id/btdangky"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:background="#00FFFFFF"
+                android:text="ĐĂNG Ký"
+                android:textColor="#2196F3">
+
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="103dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="----------------Hình thức đăng nhập khác-------------------" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/gmail"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:background="#00000000"
+                android:src="@drawable/google">
+
+            </ImageButton>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/botron"
+        android:clickable="true">
+
+
+    </RelativeLayout>
+
+</LinearLayout>

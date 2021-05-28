@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "303975413813",
+    "project_id": "greentree-f9e3f",
+    "storage_bucket": "greentree-f9e3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303975413813:android:74b18d40d3d1632835597c",
+        "android_client_info": {
+          "package_name": "com.example.doantotnghiep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303975413813-rse9fag0knvquem0jjg6s75g6r4osnic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-sI_cdMxMiDFBFG8X0-CAfvUTds4HLuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303975413813-rse9fag0knvquem0jjg6s75g6r4osnic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
