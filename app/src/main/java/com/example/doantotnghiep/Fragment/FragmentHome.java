@@ -1,4 +1,4 @@
-package com.example.doantotnghiep.Main;
+package com.example.doantotnghiep.Fragment;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -38,7 +38,7 @@ import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class Home extends Fragment {
+public class FragmentHome extends Fragment {
 
     private ViewPager viewPagerSlidePhoto;
     private Timer mTimer;
@@ -103,7 +103,7 @@ public static ArrayList<Cart> listgh;
 
         slidePhotoAdapter = new SlidePhotoAdapter(listSlidePhoto, this);
         viewPagerSlidePhoto.setAdapter(slidePhotoAdapter);
-       circleIndicator.setViewPager(viewPagerSlidePhoto);
+        circleIndicator.setViewPager(viewPagerSlidePhoto);
         slidePhotoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
 
         // Auto chuyển các slide photo
@@ -169,7 +169,6 @@ public static ArrayList<Cart> listgh;
 
         adapterhome = new AdapterHome();
         adapterhome.setData(getContext(), productList, home);
-
         rcvProduct.setAdapter(adapterhome);
     }
 
@@ -212,7 +211,6 @@ public static ArrayList<Cart> listgh;
 
         adapterSale = new AdaperSale();
         adapterSale.setData(listsale, home);
-
         rcvSale.setAdapter(adapterSale);
     }
 

@@ -18,12 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.doantotnghiep.Adapter.AdapterCart;
+import com.example.doantotnghiep.Fragment.FragmentHome;
 import com.example.doantotnghiep.MainActivity;
 import com.example.doantotnghiep.R;
 
 import java.text.DecimalFormat;
 
-import static com.example.doantotnghiep.Main.Home.listgh;
+import static com.example.doantotnghiep.Fragment.FragmentHome.listgh;
 
 
 public class MainCart extends AppCompatActivity {
@@ -82,7 +83,7 @@ public class MainCart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (Home.listgh.size() > 0) {
+                if (FragmentHome.listgh.size() > 0) {
 //                    if (thongtin.acc.size() == 0) {
 //                        Intent intent = new Intent(giohang.this, dangnhap.class);
 //                        startActivity(intent);

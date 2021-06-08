@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.doantotnghiep.Class.Product;
-import com.example.doantotnghiep.Main.Chitietsanpham;
+import com.example.doantotnghiep.Main.MainDetail;
 import com.example.doantotnghiep.MainActivity;
 import com.example.doantotnghiep.R;
 
@@ -96,7 +96,7 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolder>  {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, Chitietsanpham.class);
+                    Intent intent = new Intent(context, MainDetail.class);
                     intent.putExtra("sanpham", mListProduct.get(getPosition()));
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     // Toast.makeText(context, listcay.get(getPosition()).getProductName(), Toast.LENGTH_SHORT).show();

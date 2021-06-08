@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Toolbar
+
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBarthanhtoan"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
         android:background="#FFFFFF"
-        android:title="Thanh Toán"
-        android:titleTextColor="#000000"
-        tools:targetApi="lollipop">
-
-    </Toolbar>
-
+        app:navigationIcon="@drawable/ic_detail_back"
+        app:title="Thanh Toán"
+        app:titleTextColor="#000000"></androidx.appcompat.widget.Toolbar>
     <FrameLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
 
@@ -77,7 +77,7 @@
                     </ImageView>
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginTop="5dp"
                         android:text="Địa chỉ nhận hàng"
@@ -85,6 +85,14 @@
                         android:textStyle="bold">
 
                     </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#00000000"
+
+                        android:text="(Nhấp để chọn)"
+                        android:textSize="10dp"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -93,7 +101,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="369dp"
+                        android:layout_width="354dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
@@ -133,6 +141,7 @@
 
                         <TextView
                             android:id="@+id/ttdc"
+                            android:layout_marginTop="5dp"
                             android:layout_width="348dp"
                             android:layout_height="34dp"
                             android:layout_marginLeft="20dp"
@@ -196,7 +205,7 @@
                     <ListView
                         android:id="@+id/lvthanhtoan"
                         android:layout_width="match_parent"
-                        android:layout_height="313dp"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"></ListView>
 
                 </LinearLayout>
@@ -425,7 +434,7 @@
                 android:text="Thanh Toán"
                 android:textSize="12dp"
                 android:textColor="#FFFFFF"
-                app:backgroundTint="#F44336"></Button>
+                app:backgroundTint="#00BCD4"></Button>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

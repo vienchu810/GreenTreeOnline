@@ -10,12 +10,17 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.doantotnghiep.Main.Home;
+import com.example.doantotnghiep.Class.Product;
+import com.example.doantotnghiep.Fragment.FragmentDashboard;
+import com.example.doantotnghiep.Fragment.FragmentHome;
+import com.example.doantotnghiep.Fragment.FragmentProfile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNav;
-
+    private List<Product> listCartProduct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment,
-                    new Home()).commit();
+                    new FragmentHome()).commit();
 
         }
     }
@@ -43,18 +48,18 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.trangchu:
-                           selectedFragment = new Home();
+                           selectedFragment = new FragmentHome();
                             break;
-                        case R.id.dao:
-                           // selectedFragment = new dodung();
-                            break;
-                        case R.id.yeuthich:
-                           // selectedFragment = new yeuthich();
-                            break;
+//                        case R.id.dao:
+//                            selectedFragment = new dodung();
+//                            break;
+//                        case R.id.yeuthich:
+//                           selectedFragment = new yeuthich();
+//                            break;
                         case R.id.taikhoan:
-                           // selectedFragment = new thongtin();
+                            selectedFragment = new FragmentDashboard();
                             break;
-                        case R.id.thongke:
+                        //case R.id.thongke:
                           //  selectedFragment = new admin();
                     }
 

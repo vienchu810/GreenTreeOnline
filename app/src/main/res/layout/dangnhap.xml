@@ -50,7 +50,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/taikhoan"
+            android:id="@+id/txttaikhoan"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:layout_margin="20dp"
@@ -63,7 +63,7 @@
             android:textSize="17sp" />
 
         <EditText
-            android:id="@+id/matkhau"
+            android:id="@+id/txtmatkhau"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:layout_margin="20dp"
@@ -96,13 +96,21 @@
 
 
         </FrameLayout>
-
         <TextView
+            android:id="@+id/TxtRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Register"
+            android:textColor="#fff" />
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Forgot Password?"
             android:textColor="#fff" />
+
     </LinearLayout>
 
 

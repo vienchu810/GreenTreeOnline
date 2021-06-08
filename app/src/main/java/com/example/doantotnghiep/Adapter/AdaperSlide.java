@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.doantotnghiep.Class.SlidePhoto;
 import com.example.doantotnghiep.Class.Product;
-import com.example.doantotnghiep.Main.Home;
+import com.example.doantotnghiep.Fragment.FragmentHome;
 import com.example.doantotnghiep.MainActivity;
 import com.example.doantotnghiep.R;
 
@@ -20,9 +20,9 @@ import java.util.List;
 public class AdaperSlide extends RecyclerView.Adapter<AdaperSlide.ViewHolder> {
     private List<SlidePhoto> mListProduct;
     private MainActivity home1;
-    private Home home;
+    private FragmentHome home;
 
-    public AdaperSlide(List<SlidePhoto> listSlidePhoto, Home home) {
+    public AdaperSlide(List<SlidePhoto> listSlidePhoto, FragmentHome home) {
         this.mListProduct = listSlidePhoto;
         this.home = home;
         notifyDataSetChanged();

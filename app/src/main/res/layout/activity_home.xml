@@ -28,7 +28,6 @@
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="5dp"
-                android:scaleType="centerCrop"
                 android:src="@drawable/greentreee"
                 app:backgroundTint="#F44336" />
 
@@ -52,7 +51,7 @@
                 android:layout_marginRight="10dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/giohang"
-                app:backgroundTint="#F44336" />
+                app:backgroundTint="#FFFFFF" />
 
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>

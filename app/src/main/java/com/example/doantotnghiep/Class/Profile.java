@@ -4,20 +4,17 @@ import java.io.Serializable;
 
 public class Profile implements Serializable {
     private int id, sdt;
-    private String taikhoan, hoten, gmail, diachi, gioitinh;
-    private String ngaysinh,imgtk;
+    private String taikhoan, gmail;
+    private String dated,matkhau;
 
 
-       public Profile(int id, String tenTK, String hoten, String gioitinh, int sdt, String gmail, String date, String diachi, String img) {
+    public Profile(int id, int sdt, String taikhoan, String gmail, String dated, String matkhau) {
         this.id = id;
         this.sdt = sdt;
-        this.taikhoan = tenTK;
-        this.hoten = hoten;
+        this.taikhoan = taikhoan;
         this.gmail = gmail;
-        this.diachi = diachi;
-        this.gioitinh = gioitinh;
-        this.ngaysinh =date;
-        this.imgtk = img;
+        this.dated = dated;
+        this.matkhau = matkhau;
     }
 
     public int getId() {
@@ -44,14 +41,6 @@ public class Profile implements Serializable {
         this.taikhoan = taikhoan;
     }
 
-    public String getHoten() {
-        return hoten;
-    }
-
-    public void setHoten(String hoten) {
-        this.hoten = hoten;
-    }
-
     public String getGmail() {
         return gmail;
     }
@@ -60,35 +49,19 @@ public class Profile implements Serializable {
         this.gmail = gmail;
     }
 
-    public String getDiachi() {
-        return diachi;
+    public String getDated() {
+        return dated;
     }
 
-    public void setDiachi(String diachi) {
-        this.diachi = diachi;
+    public void setDated(String dated) {
+        this.dated = dated;
     }
 
-    public String getGioitinh() {
-        return gioitinh;
+    public String getMatkhau() {
+        return matkhau;
     }
 
-    public void setGioitinh(String gioitinh) {
-        this.gioitinh = gioitinh;
-    }
-
-    public String getNgaysinh() {
-        return ngaysinh;
-    }
-
-    public void setNgaysinh(String ngaysinh) {
-        this.ngaysinh = ngaysinh;
-    }
-
-    public String getImgtk() {
-        return imgtk;
-    }
-
-    public void setImgtk(String imgtk) {
-        this.imgtk = imgtk;
+    public void setMatkhau(String matkhau) {
+        this.matkhau = matkhau;
     }
 }

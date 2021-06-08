@@ -27,11 +27,11 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 
-import static com.example.doantotnghiep.Main.Home.listgh;
+import static com.example.doantotnghiep.Fragment.FragmentHome.listgh;
 
 
 
-public class Chitietsanpham extends AppCompatActivity {
+public class MainDetail extends AppCompatActivity {
     Product sp;
     Sale sl;
     ImageView imgcayct, yt;
@@ -116,7 +116,7 @@ cart= findViewById(R.id.ftb_cart);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Chitietsanpham. this, MainActivity.class);
+                Intent intent = new Intent(MainDetail. this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -299,7 +299,7 @@ cart= findViewById(R.id.ftb_cart);
                     Cart gioHang = new Cart(sp.getIdsp(), sp.getTensp(), sp.getIgmsp(), sp.getGiasp(), soLuong);
                     listgh.add(gioHang);
                 }
-                startActivity(new Intent(Chitietsanpham.this, MainCart.class));
+                startActivity(new Intent(MainDetail.this, MainCart.class));
                 //  }
                // Toast.makeText(Chitietsanpham.this,"Đã thêm"+listgh.size()+"vào giỏ hàng",Toast.LENGTH_SHORT).show();
             }

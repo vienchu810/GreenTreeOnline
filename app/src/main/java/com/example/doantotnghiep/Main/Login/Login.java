@@ -1,10 +1,13 @@
 package com.example.doantotnghiep.Main.Login;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,127 +15,185 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.doantotnghiep.Class.Profile;
 import com.example.doantotnghiep.MainActivity;
 import com.example.doantotnghiep.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.common.eventbus.EventBus;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
-    // public static final String TAG = dangnhap.class.getSimpleName();
-    // objacc acc;
-    private EditText edttk;
-    private EditText edtmk;
-    private EditText edtEmail;
-    private Button dangky;
-    private Button btnLogin;
-    private ProgressDialog pDialog;
-    Toolbar toolbar;
-    String tentaikhoan;
-    String matkhau;
-    ProgressBar loading;
-    // public static final String login = ketnoisever.login;
+    public SharedPreferences saveInfoAccount;
+    Button btn_login, btn_login_admin;
+    EditText userName_login, password_login;
+    String parentDbName = "login";
+    TextView bt_redirect_logout;
+    int role_id = 1;
 
-    public static final String KEY_USERNAME = "taikhoan";
-    public static final String KEY_PASSWORD = "matkhau";
-
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.dangnhap);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
-        //  EventBus.getDefault().register(this);
-//        toolbar = (Toolbar) findViewById(R.id.toolBardangnhap);
-        // toolbar.setNavigationIcon(R.drawable.back2);
-//        toolbar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//
-//        });
 
-        sharedPreferences = this.getSharedPreferences("luutaikhoan", this.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
+        saveInfoAccount = getSharedPreferences("saveInfo", Context.MODE_PRIVATE);
+        init();
 
-
-        addControl();
-       btdangnhap();
-
-//        dangky.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //  Intent intent = new Intent(dangnhap.this, dangky.class);
-//                //startActivity(intent);
-//            }
-//        });
     }
 
-    private void addControl() {
-        edttk = (EditText) findViewById(R.id.taikhoan);
-        edtmk = (EditText) findViewById(R.id.matkhau);
-        btnLogin =  findViewById(R.id.btn_dangnhap);
-     //   dangky = (Button) findViewById(R.id.btdangky);
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Đang đăng nhập...");
-        pDialog.setCanceledOnTouchOutside(false);
-    }
+    public void init() {
+        userName_login = findViewById(R.id.txttaikhoan);
+        password_login = findViewById(R.id.txtmatkhau);
+        btn_login = findViewById(R.id.btn_dangnhap);
+        bt_redirect_logout = findViewById(R.id.TxtRegister);
+       // btn_login_admin = findViewById(R.id.btn_login_admin);
 
-    public void btdangnhap() {
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        bt_redirect_logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DangKy.class));
+            }
+        });
 
-                //   Login(view);
-                Intent intent = new Intent(Login.this, MainActivity.class);
-                startActivity(intent);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Login();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
             }
         });
 
+
     }
 
-    public void Login(View view) {
+    private void Login_Admin() {
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("login");
-        Map<String, Object> map = new HashMap<>();
-        map.put("taikhoan",edttk.getText().toString());
-        map.put("matkhau",edtmk.getText().toString());
-        if (edttk.getText().toString().equals("")) {
-            edttk.setError("Vui lòng nhập tên tài khoản");
-        } else if (edtmk.getText().toString().equals("")) {
-            edtmk.setError("Vui lòng nhập mật khẩu");
+    }
+
+    private void Login() {
+        String userName = userName_login.getText().toString();
+        String password = password_login.getText().toString();
+
+        if (TextUtils.isEmpty(userName)) {
+            Toast.makeText(this, "Vui lòng nhập tên đăng nhập !!!", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Vui lòng nhập mật khẩu !!!", Toast.LENGTH_SHORT).show();
         } else {
-            tentaikhoan = edttk.getText().toString().trim();
-            matkhau = edtmk.getText().toString().trim();
-            progressDialog.setMessage("Đang đăng nhập...");
-            progressDialog.show();
+            final DatabaseReference data;
+            data = FirebaseDatabase.getInstance().getReference();
+            data.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.child("login").child(userName).exists()) {
+                        Profile dataUsers = snapshot.child("login").child(userName).getValue(Profile.class);
+                        if (dataUsers.getTaikhoan().contains(userName)) {
+                            if (dataUsers.getMatkhau().contains(password)) {
+                                // khai báo
+                                String userName = dataUsers.getTaikhoan();
+                                String password = dataUsers.getTaikhoan();
+                                int phone = dataUsers.getSdt();
+                                String mail = dataUsers.getGmail();
+                                String birthday = dataUsers.getDated();
+                                // lưu dữ liệu vào bộ nhớ SharedPreferences
+                                SharedPreferences.Editor editor = saveInfoAccount.edit();
+                                editor.putString("taikhoan", userName);
+                                editor.putString("matkhau", password);
+                                editor.putInt("sdt", phone);
+                                editor.putString("gmail", mail);
+                                editor.putString("dated", birthday);
+                                editor.commit();
+                                // kiểm tra đăng nhập
+                                Toast.makeText(Login.this, "Đăng nhập thành công !!!!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                //   EventBus.getDefault().post(true,"loginSuccess");
+                            }
 
+                        }
+
+                    } else {
+                        Toast.makeText(Login.this, "Đăng nhập thất bại:", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
+
+
+//        forgotTextLink.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                final EditText resetMail = new EditText(v.getContext());
+//                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+//                passwordResetDialog.setTitle("Reset Password ?");
+//                passwordResetDialog.setMessage("Enter Your Email To Received Reset Link.");
+//                passwordResetDialog.setView(resetMail);
+//
+//                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // extract the email and send reset link
+//                        String mail = resetMail.getText().toString();
+//                        fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                Toast.makeText(Login.this, "Reset Link Sent To Your Email.", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }).addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Toast.makeText(Login.this, "Error ! Reset Link is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//
+//                    }
+//                });
+//
+//                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // close the dialog
+//                    }
+//                });
+//
+//                passwordResetDialog.create().show();
+//
+//            }
+//        });
+//
+//
+//    }
     }
-
-
 }
 
 

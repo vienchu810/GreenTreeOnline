@@ -12,11 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DoanTotNghiep">
-        <activity android:name=".Main.MainOder"></activity>
-        <activity android:name=".Main.MainCart"></activity>
-        <activity android:name=".Main.Login.DangKy"></activity>
-        <activity android:name=".Main.Chitietsanpham" />
-        <activity android:name=".Home" /> <!-- <activity android:name="com.facebook.CustomTabActivity" -->
+        <activity android:name=".Main.Bill.MainInfoBill"></activity>
+
+        <activity android:name=".Main.Bill.MainBill" />
+        <activity android:name=".Main.Customer.MainAddCustomer" />
+        <activity android:name=".Main.Customer.MainCustomer" />
+        <activity android:name=".Main.MainOder" />
+        <activity android:name=".Main.MainCart" />
+        <activity android:name=".Main.Login.DangKy" />
+        <activity android:name=".Main.MainDetail" /> <!-- <activity android:name="com.facebook.CustomTabActivity" -->
         <!-- android:exported="true"> <intent-filter> -->
         <!-- <action android:name="android.intent.action.VIEW" /> -->
         <!-- <category android:name="android.intent.category.DEFAULT" /> -->
@@ -27,7 +31,6 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Main.Login.Login" />
         <activity android:name=".MainWait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

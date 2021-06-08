@@ -1,6 +1,6 @@
 package com.example.doantotnghiep.Class;
 
-public class Cart {
+public class Cart extends DetailOder {
     private int idgh;
     private String tensp;
     private String imgsp;
